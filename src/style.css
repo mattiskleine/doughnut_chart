@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+#container {
+  position: absolute;
+  width: 296px;
+  height: 357px;
+  background-color: var(--bgColor);
+  --radius: 120px;
+  --space: 4px;
+  --hoverBorder: 2px;
+  --hoverBorderColor: #000000;
+  --thickness: 24px;
+  --bgColor: #ffffff;
+  --segment0: 0;
+  --segment1: 0;
+  --segment2: 0;
+  --segment3: 0;
+  --segment4: 0;
+}
+
+#chart_container {
+  position: absolute;
+  top: 0;
+  left: 28px;
+  width: calc(var(--radius) * 2);
+  height: calc(var(--radius) * 2);
+  background-color: var(--bgColor);
+}
+
+.arc_container {
+  position: absolute;
+  top: calc(var(--hoverBorder)*-1);
+  left: 50%;
+  width: calc(var(--radius) + var(--hoverBorder));
+  height: calc((var(--radius) + var(--hoverBorder)) * 2);
+  overflow: hidden;
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+.arc_container_1 {
+  transform: rotate(calc(360deg / 100 * var(--segment0)));
+}
+.arc_container_2 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1))));
+}
+.arc_container_3 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1) + var(--segment2))));
+}
+.arc_container_4 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1) + var(--segment2) + var(--segment3))));
+}
+
+.arc {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transform-origin: 100% 50%;
+  overflow: hidden;
+}
+.arc_0 {
+  transform: rotate(calc(360deg / 100 * var(--segment0)));
+}
+.arc_1 {
+  transform: rotate(calc(360deg / 100 * var(--segment1)));
+}
+.arc_2 {
+  transform: rotate(calc(360deg / 100 * var(--segment2)));
+}
+.arc_3 {
+  transform: rotate(calc(360deg / 100 * var(--segment3)));
+}
+.arc_4 {
+  transform: rotate(calc(360deg / 100 * var(--segment4)));
+}
+
+.arc_fill {
+  position: absolute;
+  width: calc(var(--radius)*2);
+  height: calc(var(--radius)*2);
+  border-radius: 50%;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  pointer-events: fill;
+}
+.arc_fill_0 {
+  background-color: #F6BA75;
+}
+.arc_fill_1 {
+  background-color: #EF5F8A;
+}
+.arc_fill_2 {
+  background-color: #00A1C9;
+}
+.arc_fill_3 {
+  background-color: #673E88;
+}
+.arc_fill_4 {
+  background-color: #3999E3;
+}
+
+.hole {
+  position: absolute;
+  width: calc((var(--radius) - var(--thickness))*2);
+  height: calc((var(--radius) - var(--thickness))*2);
+  border-radius: 50%;
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  background-color: var(--bgColor);
+  box-sizing: border-box;
+  pointer-events: auto;
+  cursor: default;
+}
+
+.spacing_border {
+  position: absolute;
+  top: calc(var(--hoverBorder)*-1);
+  left: calc(50% - var(--space)/2);
+  width: var(--space);
+  height: calc(50% + var(--hoverBorder));
+  transform-origin: 50% 100%;
+  background-color: var(--bgColor);
+  z-index: 1;
+}
+.spacing_border_1 {
+  transform: rotate(calc(360deg / 100 * var(--segment0)));
+}
+.spacing_border_2 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1))));
+}
+.spacing_border_3 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1) + var(--segment2))));
+}
+.spacing_border_4 {
+  transform: rotate(calc(360deg / 100 * (var(--segment0) + var(--segment1) + var(--segment2) + var(--segment3))));
+}
+
+.hover_border_left {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: var(--hoverBorder);
+  height: 100%;
+  background-color: var(--hoverBorderColor);
+  display: none;
+}
+
+.hover_border_right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--hoverBorder);
+  height: 100%;
+  background-color: var(--hoverBorderColor);
+  display: none;
+}
+
+#cutout {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc((var(--radius) - var(--thickness) - var(--hoverBorder)) * 2);
+  height: calc((var(--radius) - var(--thickness) - var(--hoverBorder)) * 2);
+  border-radius: 50%;
+  background-color: var(--bgColor);
+  z-index: 1;
+}
+
+#cutout_outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc((var(--radius) + var(--hoverBorder)) * 2);
+  height: calc((var(--radius) + var(--hoverBorder)) * 2);
+  border-radius: 50%;
+  border: 5px solid var(--bgColor);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+
+
+#legend_container {
+  display: flex;
+  position: absolute;
+  width: 296px;
+  height: 80px;
+  background-color: var(--bgColor);
+  bottom: 0;
+}
+
+.legend_item {
+  position: absolute;
+  width: 56px;
+  height: 80px;
+  top: 0;
+}
+
+#legend_item_food {
+  left: 0;
+}
+
+#legend_item_consumption {
+  left: 58px;
+}
+
+#legend_item_energy {
+  left: 116px;
+}
+
+#legend_item_transport {
+  left: 174px;
+}
+
+#legend_item_public {
+  left: 232px;
+}
+
+.legend_icon_wrapper {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  left: calc(50% - 36px/2);
+  top: 0;
+}
+
+.legend_icon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.legend_label {
+  position: absolute;
+  height: 14px;
+  top: 44px;
+  font-family: Hind;
+  font-size: 12px;
+  line-height: 14px;
+  font-style: normal;
+  font-weight: normal;
+  color: #263238;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#legend_label_food {
+  width: 27px;
+  left: calc(50% - 27px/2 + 0.5px);
+}
+
+#legend_label_consumption {
+  width: 38px;
+  left: calc(50% - 38px/2);
+}
+
+#legend_label_energy {
+  width: 36px;
+  left: calc(50% - 36px/2);
+}
+
+#legend_label_transport {
+  width: 40px;
+  left: calc(50% - 40px/2);
+}
+
+#legend_label_public {
+  width: 32px;
+  left: calc(50% - 32px/2);
+}
+
+.legend_value{
+  position: absolute;
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 14px;
+  font-style: normal;
+  font-weight: normal;
+  color: #546E7A;
+  text-align: center;
+  top: 62px;
+  width: 50px;
+  left: calc(50% - 50px/2);
+}
